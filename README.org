@@ -1,0 +1,51 @@
+* nctool
+  
+  A very simple utility to query data in a NetCDF4 file. 
+
+  This utility is used mainly for diagnostic and testing purposes relating 
+  to other development projects. Current functionality is limited to extracting 
+  individual values or a /slice/ of values from a specific variable. Additional 
+  functionality may be added if/when required. 
+
+** Install
+
+   The current version is using the Github version of the netcdf4 NPM package.
+   This is because the current npmjs.com version does not yet support node >=
+   v12. In order to build and run this utility, you will need to install the
+   NetCDF libraries, available as a package on most Linux systems or via
+   Homebrew for macOS.
+
+   To install and run the utility, do the following in a terminal -
+
+   #+begin_src shell
+     git clone https://github.com/theophilusx/nctool .
+     cd nctool
+     npm i
+     ./node index.js <args>
+   #+end_src
+   
+   The supported args are 
+
+   - -v <var name> :: Specify the variable to read
+   - -s <spec> :: The read spec. A list of numbers. In the case of a single
+     value, the numbers represent each index position for the dimensions of the
+     variable. In the case of a /slice/ of data, the numbers are pairs
+     representing starting index and slice length (see examples below).
+   - -t <type> :: either ~value~ or ~slice~. Determines type of data read to
+     perform.
+   - -f <file path> :: Path to the NetCDF4 data file to read
+
+   A ~spec~ value is a comma separated list of numbers. If the ~spec~ is for
+   reading a single value, the numbers represent the index for each dimension
+   associated with the variable. For example, a ~spec~ of 5,4 would retrieve the
+   value stored at index position 5 in the first dimension and index position 4
+   of the second dimension.
+
+   A ~spec~ value for a slice of data is made up of a comma separated list of
+   numbers where each pair of numbers represents the starting index and number
+   of values to read from that dimension. For example, a ~spec~ of 2,3,2,2 would
+   read 3 values along the first dimension from position 2 and 2 values from the
+   second dimension from position 2 (a total of 6 values).
+
+
+  
