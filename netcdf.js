@@ -20,12 +20,10 @@ const exists = (filePath) => {
 };
 
 class Netcdf {
-  async onstructor(ncFile) {
+  constructor(ncFile) {
     try {
-      await exists(ncFile);
       this.file = ncFile;
-      this.nc = new netcdf4.File(ncFile, "r");
-      return true;
+      this.nc = undefined;
     } catch (err) {
       throw err;
     }
@@ -42,12 +40,14 @@ class Netcdf {
     }
   }
 
-  open() {
+  async open() {
     try {
-      if (nc) {
+      await exists(this.file);
+      if (this.nc) {
         this.close();
       }
       this.nc = new netcdf4.File(this.file, "r");
+      return true;
     } catch (err) {
       throw err;
     }
