@@ -18,5 +18,9 @@
   "dependencies": {
     "minimist": "^1.2.5",
     "netcdf4": "parro-it/netcdf4"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^8.1.1"
   }
 }
