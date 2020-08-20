@@ -21,15 +21,11 @@ const exists = (filePath) => {
 
 class Netcdf {
   constructor(ncFile) {
-    try {
-      if (!ncFile) {
-        throw new Error("Error: Netcdf requires a NetCDF file argument");
-      }
-      this.file = ncFile;
-      this.nc = undefined;
-    } catch (err) {
-      throw err;
+    if (!ncFile) {
+      throw new Error("Netcdf requires a NetCDF file argument");
     }
+    this.file = ncFile;
+    this.nc = undefined;
   }
 
   close() {
