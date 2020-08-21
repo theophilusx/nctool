@@ -86,7 +86,44 @@ describe("Test reading values", function () {
     a1 = nc.readSlice("tasmax", [0, 2, 300, 2, 400, 2]);
     return expect(a1.length).to.equal(8);
   });
-gg  it("Test readslice value 1", function () {
-    return expect();
+  it("Test readslice value 1", function () {
+    let offset = utils.calcOffset([0, 0, 0], [2, 2, 2]);
+    let val = a1[offset];
+    return expect(val).to.equal(v1);
+  });
+  it("Test readslice value 2", function () {
+    let offset = utils.calcOffset([0, 0, 1], [2, 2, 2]);
+    let val = a1[offset];
+    return expect(val).to.equal(v2);
+  });
+  it("Test readslice value 3", function () {
+    let offset = utils.calcOffset([0, 1, 0], [2, 2, 2]);
+    let val = a1[offset];
+    return expect(val).to.equal(v3);
+  });
+  it("Test readslice val 4", function () {
+    let offset = utils.calcOffset([0, 1, 1], [2, 2, 2]);
+    let val = a1[offset];
+    return expect(val).to.equal(v4);
+  });
+  it("Test readSlice val 5", function () {
+    let offset = utils.calcOffset([1, 0, 0], [2, 2, 2]);
+    let val = a1[offset];
+    return expect(val).to.equal(v5);
+  });
+  it("Test readSlice val 6", function () {
+    let offset = utils.calcOffset([1, 0, 1], [2, 2, 2]);
+    let val = a1[offset];
+    return expect(val).to.equal(v6);
+  });
+  it("Test readSlice val 7", function () {
+    let offset = utils.calcOffset([1, 1, 0], [2, 2, 2]);
+    let val = a1[offset];
+    return expect(val).to.equal(v7);
+  });
+  it("Test readSlice val 8", function () {
+    let offset = utils.calcOffset([1, 1, 1], [2, 2, 2]);
+    let val = a1[offset];
+    return expect(val).to.equal(v8);
   });
 });
